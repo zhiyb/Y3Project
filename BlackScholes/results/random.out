@@ -1,0 +1,67 @@
+[./BlackScholes] - Starting...
+GPU Device 0: "GK20A" with compute capability 3.2
+
+Initializing data...
+...allocating CPU memory for options.
+...allocating GPU memory for options.
+...generating input data in CPU mem.
+...copying input data to GPU mem.
+Data init done.
+
+Executing Black-Scholes GPU kernel (1024 iterations)...
+
+Starting double precision calculation.
+Options count             : 8000000
+BlackScholesGPU() time    : 43.989391 msec
+Effective memory bandwidth: 3.637241 GB/s
+Gigaoptions per second    : 0.181862
+
+BlackScholes, Throughput = 0.1819 GOptions/s, Time = 0.04399 s, Size = 8000000 options, NumDevsUsed = 1, Workgroup = 128
+Executing Black-Scholes GPU kernel (1024 iterations)...
+
+Starting single precision calculation.
+Options count             : 8000000
+BlackScholesGPU() time    : 13.863552 msec
+Effective memory bandwidth: 11.541054 GB/s
+Gigaoptions per second    : 0.577053
+
+BlackScholes, Throughput = 0.5771 GOptions/s, Time = 0.01386 s, Size = 8000000 options, NumDevsUsed = 1, Workgroup = 128
+
+Reading back GPU results...
+Checking the results...
+...running CPU calculations.
+
+Comparing the results (CPU double - GPU double)...
+L1 norm: 1.364787E-07
+Max absolute error: 9.418284E-06
+
+Comparing the results (CPU double - GPU float)...
+L1 norm: 1.812866E-07
+Max absolute error: 1.258644E-05
+
+Comparing the results (GPU double - GPU float)...
+L1 norm: 1.527810E-07
+Max absolute error: 1.096134E-05
+
+Executing Black-Scholes GPU kernel (1024 iterations)...
+
+Starting mixed precision calculations.
+P(double) | GPU Time (msec) | Memory BW (GB/s) | Gops/sec | CPU L1 norm | CPU Abs err | GPU L1 norm | GPU Abs err
+1 | 8000000 | 43.858 | 3.64814 | 0.182407 | 1.364787E-07 | 9.418284E-06 | 0.000000E+00 | 0.000000E+00
+0.901367 | 8000000 | 40.746 | 3.92677 | 0.196338 | 1.364787E-07 | 9.418284E-06 | 0.000000E+00 | 0.000000E+00
+0.81543 | 8000000 | 38.0476 | 4.20526 | 0.210263 | 1.812866E-07 | 1.258644E-05 | 1.527810E-07 | 1.096134E-05
+0.743164 | 8000000 | 35.9361 | 4.45235 | 0.222618 | 1.812866E-07 | 1.258644E-05 | 1.527810E-07 | 1.096134E-05
+0.598633 | 8000000 | 31.7554 | 5.03851 | 0.251926 | 1.364787E-07 | 9.418284E-06 | 0.000000E+00 | 0.000000E+00
+0.485352 | 8000000 | 28.417 | 5.63042 | 0.281521 | 1.364787E-07 | 9.418284E-06 | 0.000000E+00 | 0.000000E+00
+0.388672 | 8000000 | 25.4203 | 6.29419 | 0.31471 | 1.364787E-07 | 9.418284E-06 | 0.000000E+00 | 0.000000E+00
+0.296875 | 8000000 | 22.7258 | 7.04047 | 0.352023 | 1.812866E-07 | 1.258644E-05 | 1.527810E-07 | 1.096134E-05
+0.204102 | 8000000 | 20.129 | 7.94874 | 0.397437 | 1.364787E-07 | 9.418284E-06 | 0.000000E+00 | 0.000000E+00
+0.101562 | 8000000 | 17.0422 | 9.38847 | 0.469424 | 1.812866E-07 | 1.258644E-05 | 1.527810E-07 | 1.096134E-05
+0 | 8000000 | 13.8749 | 11.5316 | 0.576581 | 1.812866E-07 | 1.258644E-05 | 1.527810E-07 | 1.096134E-05
+Shutting down...
+...releasing GPU memory.
+...releasing CPU memory.
+Shutdown done.
+
+[BlackScholes] - Test Summary
+Test passed
