@@ -1,0 +1,51 @@
+[./BlackScholes] - Starting...
+GPU Device 0: "GK20A" with compute capability 3.2
+
+Initializing data...
+...allocating CPU memory for options.
+...allocating GPU memory for options.
+...generating input data in CPU mem.
+...copying input data to GPU mem.
+Data init done.
+
+Executing Black-Scholes GPU kernel (1024 iterations)...
+
+Starting double precision calculation.
+Options count             : 8000000
+BlackScholesGPU() time    : 43.911236 msec
+Effective memory bandwidth: 3.643714 GB/s
+Gigaoptions per second    : 0.182186
+
+BlackScholes, Throughput = 0.1822 GOptions/s, Time = 0.04391 s, Size = 8000000 options, NumDevsUsed = 1, Workgroup = 128
+
+Reading back GPU results...
+Checking the results...
+...running CPU calculations.
+
+Comparing the results (CPU double - GPU double)...
+L1 norm: 1.364787E-07
+Max absolute error: 9.418284E-06
+
+Executing Black-Scholes GPU kernel (1024 iterations)...
+
+Starting mixed precision calculations.
+P(double) | GPU Time (msec) | Memory BW (GB/s) | Gops/sec | CPU L1 norm | CPU Abs err | GPU L1 norm | GPU Abs err
+1 | 8000000 | 43.7947 | 3.65341 | 0.182671 | 1.364787E-07 | 9.418284E-06 | 0.000000E+00 | 0.000000E+00
+0.900391 | 8000000 | 40.8925 | 3.9127 | 0.195635 | 1.364787E-07 | 9.418284E-06 | 0.000000E+00 | 0.000000E+00
+0.800781 | 8000000 | 37.8834 | 4.22349 | 0.211175 | 1.364787E-07 | 9.418284E-06 | 0.000000E+00 | 0.000000E+00
+0.701172 | 8000000 | 34.8389 | 4.59257 | 0.229628 | 1.364787E-07 | 9.418284E-06 | 0.000000E+00 | 0.000000E+00
+0.601562 | 8000000 | 31.9058 | 5.01476 | 0.250738 | 1.364787E-07 | 9.418284E-06 | 0.000000E+00 | 0.000000E+00
+0.501953 | 8000000 | 28.8666 | 5.54273 | 0.277137 | 1.364787E-07 | 9.418284E-06 | 0.000000E+00 | 0.000000E+00
+0.402344 | 8000000 | 25.9436 | 6.16722 | 0.308361 | 1.364787E-07 | 9.418284E-06 | 0.000000E+00 | 0.000000E+00
+0.302734 | 8000000 | 22.9304 | 6.97764 | 0.348882 | 1.364787E-07 | 9.418284E-06 | 0.000000E+00 | 0.000000E+00
+0.203125 | 8000000 | 19.9965 | 8.00138 | 0.400069 | 1.364787E-07 | 9.418284E-06 | 0.000000E+00 | 0.000000E+00
+0.103516 | 8000000 | 16.9997 | 9.41193 | 0.470597 | 1.364787E-07 | 9.418284E-06 | 0.000000E+00 | 0.000000E+00
+0.00390625 | 8000000 | 14.0927 | 11.3534 | 0.567669 | 1.364787E-07 | 9.418284E-06 | 0.000000E+00 | 0.000000E+00
+0 | 8000000 | 13.9984 | 11.4299 | 0.571494 | 1.812866E-07 | 1.258644E-05 | 1.527810E-07 | 1.096134E-05
+Shutting down...
+...releasing GPU memory.
+...releasing CPU memory.
+Shutdown done.
+
+[BlackScholes] - Test Summary
+Test passed

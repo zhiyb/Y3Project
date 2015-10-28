@@ -367,7 +367,7 @@ int main(int argc, char **argv)
 
     puts("P(double) | GPU Time (msec) | Memory BW (GB/s) | Gops/sec | CPU L1 norm | CPU Abs err | GPU L1 norm | GPU Abs err");
 #define RAND_STEPS	10
-    // First N iterations using double precision
+    // Last N iterations using double precision
     int prob = NUM_ITERATIONS;
 start:
     // Start mixed precision calculation
@@ -377,7 +377,7 @@ start:
     unsigned int count = 0;
     for (i = 0; i < NUM_ITERATIONS; i++)
     {
-        if (i < prob) {
+        if (NUM_ITERATIONS - 1 - i < prob) {
 	    count++;
             BlackScholesGPU<<<DIV_UP(OPT_N, 128), 128/*480, 128*/>>>(
                 d_CallResult_sf,
